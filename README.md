@@ -1,8 +1,11 @@
-# React + Vite
+# Tic Tac Toe Inception
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A tic tac toe game with Christopher Nolan Movie like Twist! Made with html, tailwind css and react. This is my first tailwind CSS project. Learned how to reuse and remodel complex components through this project. Thoroughly enjoyed the challenge it introduced!
 
-Currently, two official plugins are available:
+- Change player names
+- Reset after winning/drawing
+- Score based Victory added in case of no Absolute Victory
+- Marked tile overwriting protection
+- Fully Responsive UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+WILL ADD DARK MODE SUPPORT SOON.
