@@ -131,6 +131,8 @@ export default function InnergameBoard(props) {
     let innerWonTile = 'InnerTile border border-black size-8 md:size-12'
     let innerDrawTile = `InnerTile border border-slate-400 size-8 md:size-12`
 
+    let outerWonBoard = `OuterTile border-collapse border-4 border-yellow-500 flex-col justify-center items-center z-50 bg-yellow-700`
+
     let renderInnerBoard = innerTile.map((item, indexout) => {
       return <div className={`InnerTileRow flex justify-center items-center bg-slate-400`} key={`outer-${indexout}`}>
           {item.map((i, indexin) => {
@@ -158,7 +160,8 @@ export default function InnergameBoard(props) {
   }) 
 
   return (
-    <div className={`OuterTile border-collapse border-2 border-slate-700 flex-col justify-center items-center bg-slate-700`}>
+    <div className={(props.winnerTile !== null && props.winnerTile.includes(props.boardID)) ? outerWonBoard
+    : `OuterTile border-collapse border-4 border-slate-700 flex-col justify-center items-center bg-slate-700`}>
       {renderInnerBoard}
     </div>
   )

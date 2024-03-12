@@ -13,6 +13,8 @@ export default function OuterGameBoard(props) {
 
     let [score, setScore] = useState([0, 0]);
 
+    let [winningTiles, setWinningTiles] = useState(null);
+
     function checkDraw() {
         for (let i=0; i<3; i++)
             for (let j=0; j<3; j++)
@@ -48,7 +50,8 @@ export default function OuterGameBoard(props) {
                     break;
                 count++;
                 arr.push(`${i}${j}`);
-                if (count == 3){              
+                if (count == 3){
+                    setWinningTiles(arr);     
                     console.log(`${player} wins!`);
                     props.sendFinalWinner(player, true);
                     props.sendChangeTurn();
@@ -59,12 +62,15 @@ export default function OuterGameBoard(props) {
         //col check
         for(let i=0; i<3; i++){
             let count = 0;
+            let arr = [];
             for(let j=0; j<3; j++){       
                 if (outerTiles[j][i] != playerSymbol){
                     break;
                   }
                 count++;
-                if (count == 3){                
+                arr.push(`${j}${i}`);
+                if (count == 3){    
+                    setWinningTiles(arr);             
                     console.log(`${player} wins!`);
                     props.sendChangeTurn();
                     props.sendFinalWinner(player, true);
@@ -83,6 +89,7 @@ export default function OuterGameBoard(props) {
                 arr.push(`${i}${i}`);
             } else break;
             if (count1 == 3){
+                setWinningTiles(arr); 
                 console.log(`${player} wins!`);
                 props.sendChangeTurn();
                 props.sendFinalWinner(player, true);
@@ -99,7 +106,8 @@ export default function OuterGameBoard(props) {
                 count2++;
                 arr.push(`${i}${2-i}`);
             }
-            if (count2 == 3){                
+            if (count2 == 3){       
+                setWinningTiles(arr);          
                 console.log(`${player} wins!`);
                 props.sendChangeTurn();
                 props.sendFinalWinner(player, true);
@@ -141,7 +149,8 @@ export default function OuterGameBoard(props) {
                         return <InnerGameBoard key={`${indexout}${indexin}`}
                         gameOver = {props.gameOver}
                         boardID={`${indexout}${indexin}`} turn={props.turn} 
-                        sendChangeTurn={getChangeTurn} sendInnerWinner={getInnerWinner} 
+                        sendChangeTurn={getChangeTurn} sendInnerWinner={getInnerWinner}
+                        winnerTile={winningTiles} 
                         won={(outerTiles[indexout][indexin]=='_')? 0 :
                         (outerTiles[indexout][indexin]=='X')? 1 :
                         (outerTiles[indexout][indexin]=='O')? 2 : 3} />
