@@ -103,7 +103,6 @@ export default function InnergameBoard(props) {
       let row = event.target.id.split('')[2];
       let col = event.target.id.split('')[3];
       if (innerTile[row][col] !== `_`){
-        alert(`Select Empty Tiles Only`);
         return;
       }      
       setInnerTile((prev) => {
